@@ -75,9 +75,9 @@ class WarningNotifications(models.Model):
     def get_value(self):
         result = ''
         if self.notification_type == 'pass_payment_due_date':
-            result = '{} -Nolu Ödəniş müddətindən keçmişdir'.format(self.project_name.id)
+            result = '{} -Proyektin müddətindən keçmişdir'.format(self.project_name.id)
         elif self.notification_type == 'project_due_date_last':
-            result = '{} -Nolu Scrollerin ödeniş müddətinin son günüdür'.format(self.project_name.id)
+            result = '{} -Proyektin müddətinin son günüdür'.format(self.project_name.id)
 
         return result
 
