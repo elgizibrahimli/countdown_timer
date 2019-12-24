@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.conf import settings
 
 class Developers(models.Model):
     full_name = models.CharField(max_length=255)
@@ -17,8 +19,8 @@ class InfoNotifications(models.Model):
     project_name = models.ForeignKey(Projects, related_name='info_notification', on_delete=models.CASCADE)
     types = (
         
-        ('project_due_date_ten', 'Proyektin müddəti  yaxınlaşır'),
-        ("project_due_date_five", 'Proyektin müddəti  yaxınlaşır'),
+        ('project_due_date_ten', 'Proyektin müddətinə 10 gün qalır'),
+        ("project_due_date_five", 'Proyektin müddətinə 5 gün qalır'),
     )
     notification_type = models.CharField(max_length=50, choices=types)
     #read_status = models.BooleanField(default=False)
