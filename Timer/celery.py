@@ -32,7 +32,7 @@ def debug_task(self):
 # CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
 # CELERY_TASK_SERIALIZER = 'json'
 
-
+"""
 if settings.PROD:
     app.conf.update(
         BROKER_URL='amqp://guest:guest@88.99.142.165:5672/',
@@ -53,6 +53,8 @@ else:
         CELERY_TASK_SERIALIZER='json',
         CELERY_RESULT_SERIALIZER='json',
     )
+
+"""
 
 
 

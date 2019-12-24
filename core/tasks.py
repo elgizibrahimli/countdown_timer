@@ -1,5 +1,6 @@
 # Create your tasks here
 from __future__ import absolute_import, unicode_literals
+from django.core.mail import EmailMultiAlternatives
 
 from celery import shared_task
 from core.models import Projects, InfoNotifications, WarningNotifications
@@ -10,10 +11,17 @@ from datetime import *
 # import datetime
 
 from django.utils import timezone
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
 
-channel_layer = get_channel_layer()
+from asgiref.sync import async_to_sync
+from time import sleep
+
+
+
+
+@shared_task
+def sleepy(duration):
+    sleep(duration)
+    return None
 
 
  
@@ -74,7 +82,7 @@ def five_days_left():
 
 
 @shared_task
-def today_is_payment_day():
+def today_is_project_day():
     """
     bu zaman o yaranirki warning olur ve mesaj gedirki proyekt hell olunmalidir. bugun son gundur.
     :return:
@@ -96,6 +104,21 @@ def today_is_payment_day():
             print("this device has fulfillment")
 
     return "Finished operation"
+
+
+
+@shared_task
+def notification_func(email, url):
+    subject, from_email, to = "", settings.EMAIL_HOST_USER, email
+
+    html_content = '<p>Change your password with this link <a href="{}">{}</a></p>'.format(
+        url + url)
+    text_content = ''
+
+    msg = EmailMultiAlternatives(subject, text_content, from_email, [to])
+    msg.attach_alternative(html_content, "text/html")
+    msg.send()
+    return ""
 
 
  

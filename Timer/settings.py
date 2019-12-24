@@ -25,6 +25,9 @@ SECRET_KEY = 'p&q4plzi!69tl8h+&(+a*7k)&m8e^k^=b*hv)zs1(_)9v15u@#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
+ 
+
 ALLOWED_HOSTS = []
 
 
@@ -40,6 +43,7 @@ INSTALLED_APPS = [
     'core.apps.CoreConfig',
     'django_celery_results',
     'celery',
+    'redis'
     
 ]
 
@@ -145,3 +149,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_USE_TLS = True
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "ibrahimli.elgiz555@gmail.com"
+EMAIL_HOST_PASSWORD ="jjhuacxnagzjeijm" 
