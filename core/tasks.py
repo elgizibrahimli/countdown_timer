@@ -111,7 +111,7 @@ def today_is_project_day():
 def notification_func(email, url):
     subject, from_email, to = "", settings.EMAIL_HOST_USER, email
 
-    html_content = '<p>Change your password with this link <a href="{}">{}</a></p>'.format(
+    html_content = '<p>nesese <a href="{}">{}</a></p>'.format(
         url + url)
     text_content = ''
 
