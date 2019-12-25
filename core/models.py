@@ -5,12 +5,11 @@ from django.conf import settings
 class Developers(models.Model):
     full_name = models.CharField(max_length=255)
     email = models.EmailField(max_length=255 )
+    projects = models.ForeignKey(Projects, on_delete=models.PROTECT)
 
 class Projects(models.Model):
     project_name = models.CharField(max_length=255)
-    developer = models.ForeignKey(Developers,on_delete=models.PROTECT)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    end_date = models.DateTimeField()
     project_bool = models.BooleanField(default=False)
  
 
