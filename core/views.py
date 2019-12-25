@@ -1,22 +1,34 @@
 from django.shortcuts import render
 from core.models import Projects,InfoNotifications,WarningNotifications
-from django.http import HttpResponse
+from django.http import JsonResponse
+
 
 from .tasks import sleepy,ten_days_left
+from django.views import View
+
+
+from celery import current_app
+
+from django import forms
+from django.conf import settings
+
+
 
 """
+
 def index(reuqest):
     sleepy(10)
     return HttpResponse('Done!')
 
-<<<<<<< HEAD
 """
 
-def ten_days(request):
-    return HttpResponse('10 gun qalib')
 
 
-=======
+
+ 
+
+
+
 class TaskView(View):
     def get(self, request, task_id):
         task = current_app.AsyncResult(task_id)
@@ -26,4 +38,4 @@ class TaskView(View):
             response_data['results'] = task.get()
 
         return JsonResponse(response_data)
->>>>>>> f891b70eabbd60d2b1a074d2e4fd26841213e6e4
+

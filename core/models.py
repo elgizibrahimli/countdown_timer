@@ -2,15 +2,18 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 
-class Developers(models.Model):
-    full_name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255 )
-    projects = models.ForeignKey(Projects, on_delete=models.PROTECT)
 
 class Projects(models.Model):
     project_name = models.CharField(max_length=255)
     end_date = models.DateTimeField()
     project_bool = models.BooleanField(default=False)
+
+class Developers(models.Model):
+    full_name = models.CharField(max_length=255)
+    email = models.EmailField(max_length=255 )
+    project = models.ForeignKey(Projects, on_delete=models.PROTECT)
+
+ 
  
 
 
